@@ -1,4 +1,4 @@
-Problem:
+# Problem:
 
 Given a list of urls in urls.txt: https://s3.amazonaws.com/fieldlens-public/urls.txt, write a program that will fetch each page and determine whether a search term exists on the page (this search can be a really rudimentary regex - this part isn't too important).
 
@@ -17,5 +17,5 @@ Sample urls.txt: https://s3.amazonaws.com/fieldlens-public/urls.txt
 The solution must be able to be run from the command line (dont assume JDK is available):
 java -jar ./jarFileName.jar
 
-Solution:
+# Solution:
 #TODO add this
