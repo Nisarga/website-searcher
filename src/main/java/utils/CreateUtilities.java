@@ -41,7 +41,7 @@ public class CreateUtilities {
 
     public static void initializeResources(){
         try{
-            FileWriter fileWriter = new FileWriter("myfile.txt", false);
+            FileWriter fileWriter = new FileWriter("results.txt", false);
             fileWriter.close();
         }
         catch(IOException ex){

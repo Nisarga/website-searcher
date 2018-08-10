@@ -51,7 +51,7 @@ public class WebsiteSearcherRunnable implements Runnable {
     }
 
     synchronized public void writeToFile(URL url) {
-        try (FileWriter fw = new FileWriter("myfile.txt", true);
+        try (FileWriter fw = new FileWriter("results.txt", true);
              BufferedWriter bw = new BufferedWriter(fw);
              PrintWriter out = new PrintWriter(bw)) {
             out.println(url.toString());

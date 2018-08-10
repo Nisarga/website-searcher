@@ -34,3 +34,4 @@ Furthermore, we are asked to avoid using any thread pooling libraries which make
 
 - Gradle is used as a build system. Install gradle and run a `gradle build` in the main project structure to compile the code
 - The jar file is uploaded which can be directly run as `java -jar build/libs/website-searcher.jar` or can be run with this command after a `gradle build`
+- The results are located in `results.txt`
