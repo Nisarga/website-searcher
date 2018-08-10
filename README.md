@@ -5,12 +5,13 @@ Given a list of urls in urls.txt: https://s3.amazonaws.com/fieldlens-public/urls
 You can make up the search terms. Ignore the addition information in the urls.txt file.
 
 Constraints
-Search is case insensitive
-Should be concurrent.
-But! It shouldn't have more than 20 HTTP requests at any given time.
-The results should be writted out to a file results.txt
-Avoid using thread pooling libraries like Executor, ThreadPoolExecutor, Celluloid, or Parallel streams.
-The solution must be written in Kotlin or Java.
+
+- Search is case insensitive
+- Should be concurrent.
+- But! It shouldn't have more than 20 HTTP requests at any given time.
+- The results should be writted out to a file results.txt
+- Avoid using thread pooling libraries like Executor, ThreadPoolExecutor, Celluloid, or Parallel streams.
+- The solution must be written in Kotlin or Java.
 
 Sample urls.txt: https://s3.amazonaws.com/fieldlens-public/urls.txt
 
@@ -34,4 +35,4 @@ Furthermore, we are asked to avoid using any thread pooling libraries which make
 
 - Gradle is used as a build system. Install gradle and run a `gradle build` in the main project structure to compile the code
 - The jar file is uploaded which can be directly run as `java -jar build/libs/website-searcher.jar` or can be run with this command after a `gradle build`
-- The results are located in `results.txt`
+- The results are located in `results.txt` which contain the list of URLS with the search term
