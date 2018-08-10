@@ -16,3 +16,9 @@ dependencies {
 }
 
 jar { manifest { attributes 'Main-Class': 'main.java.websitesearcher.Application' } }
+
+repositories { jcenter() }
+dependencies {
+    testCompile 'junit:junit:4.12'
+    compile 'junit:junit:4.12'
+}

@@ -15,7 +15,6 @@ public class CreateUtilities {
 
     public static List<WebsiteInformation> extractUrlFromFile(InputStream inputStream) throws IOException {
         List<WebsiteInformation> urlList = new ArrayList<>();
-        //InputStream inputStream1 = CreateUtilities.class.getResourceAsStream("urls.txt");
         try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
             String line;
             boolean skipFirstLine = true;
@@ -48,4 +47,5 @@ public class CreateUtilities {
             LOGGER.warning("Unable to create output file" + ex.toString());
         }
     }
+
 }

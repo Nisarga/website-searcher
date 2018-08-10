@@ -54,7 +54,7 @@ public class WebsiteSearcherRunnable implements Runnable {
         try (FileWriter fw = new FileWriter("results.txt", true);
              BufferedWriter bw = new BufferedWriter(fw);
              PrintWriter out = new PrintWriter(bw)) {
-            out.println(url.toString());
+             out.println(url.toString());
         } catch (IOException e) {
             LOGGER.warning("Unable to write to output file" + e.toString());
         }

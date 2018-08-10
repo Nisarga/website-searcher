@@ -63,7 +63,7 @@ set CMD_LINE_ARGS=%*
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\website-searcher.jar
+set CLASSPATH=%APP_HOME%\lib\website-searcher.jar;%APP_HOME%\lib\junit-4.12.jar;%APP_HOME%\lib\hamcrest-core-1.3.jar
 
 @rem Execute website-searcher
 "%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %WEBSITE_SEARCHER_OPTS%  -classpath "%CLASSPATH%" main.java.websitesearcher.Application %CMD_LINE_ARGS%
