@@ -26,11 +26,15 @@ public class Application {
 
         MyThreadPoolImplementation threadPool = new MyThreadPoolImplementation(urlList.size(), MAX_NUM_THREADS);
 
-
         for(WebsiteInformation url : urlList) {
             Thread t = new Thread(new WebsiteSearcherRunnable(url.getUrl(),searchTerm));
             threadPool.submitTask(t);
         }
 
+        //make sure the program exits
+        long start = System.currentTimeMillis();
+        long end = start + 60*1000;
+        while (System.currentTimeMillis() < end) {}
+        System.exit(1);
     }
 }
