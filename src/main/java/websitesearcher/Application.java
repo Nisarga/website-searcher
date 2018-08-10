@@ -2,7 +2,7 @@ package main.java.websitesearcher;
 
 import main.java.WebsiteSearcherRunnable;
 import main.java.mulithreadedexecutors.MyThreadPoolImplementation;
-import main.java.utils.UrlExtractor;
+import main.java.utils.CreateUtilities;
 import main.java.utils.WebsiteInformation;
 
 import java.io.IOException;
@@ -21,7 +21,9 @@ public class Application {
     public static void main(String[] args) throws IOException, InterruptedException{
         InputStream inputStream =Application.class.getResourceAsStream("/urls.txt");
 
-        List<WebsiteInformation> urlList = UrlExtractor.extractUrlFromFile(inputStream);
+        List<WebsiteInformation> urlList = CreateUtilities.extractUrlFromFile(inputStream);
+        CreateUtilities.initializeResources();
+
         MyThreadPoolImplementation threadPool = new MyThreadPoolImplementation(urlList.size(), MAX_NUM_THREADS);
 
 

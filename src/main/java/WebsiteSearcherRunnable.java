@@ -6,10 +6,13 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.logging.Logger;
 
+/**
+ * This class implements the Java Runnable interface which creates an instance to be run by a thread
+ * The run method here extracts html content from the url and runs a rudimentary search of a word in it
+ * The "Search" here is just a simple word search after a sentence is split by a space
+ */
 public class WebsiteSearcherRunnable implements Runnable {
     private final static Logger LOGGER = Logger.getLogger(WebsiteSearcherRunnable.class.getName());
-    private static long currentTime;
-    private volatile boolean stop = false;
 
     String url;
     String searchTerm;
@@ -21,7 +24,6 @@ public class WebsiteSearcherRunnable implements Runnable {
 
     @Override
     public void run() {
-
         try {
             parseUrlData();
         } catch (MalformedURLException e) {
@@ -40,7 +42,6 @@ public class WebsiteSearcherRunnable implements Runnable {
         String inputLine;
         while ((inputLine = in.readLine()) != null)
             if (inputLine!=null && Arrays.asList(inputLine.split(" ")).contains(this.searchTerm)) {
-                System.out.println("Writing to file when url is " + url);
                 writeToFile(url);
                 return true;
             }
@@ -50,7 +51,6 @@ public class WebsiteSearcherRunnable implements Runnable {
     }
 
     synchronized public void writeToFile(URL url) {
-        System.out.println("Writing to file");
         try (FileWriter fw = new FileWriter("myfile.txt", true);
              BufferedWriter bw = new BufferedWriter(fw);
              PrintWriter out = new PrintWriter(bw)) {

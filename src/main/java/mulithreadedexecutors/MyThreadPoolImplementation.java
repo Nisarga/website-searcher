@@ -2,9 +2,13 @@ package main.java.mulithreadedexecutors;
 
 import main.java.WebsiteSearcherTask;
 
+/**
+ * This class represents a collection of threads which execute some tasks
+ * This class en queues tasks to the blocking queue
+ * This class creates WebsiteSearcherTasks
+ */
 public class MyThreadPoolImplementation {
     MyBlockingQueue<Runnable> blockingQueue;
-
     public MyThreadPoolImplementation(int size, int maxThreads) throws InterruptedException{
         blockingQueue = new MyBlockingQueue<>(size);
         WebsiteSearcherTask task;

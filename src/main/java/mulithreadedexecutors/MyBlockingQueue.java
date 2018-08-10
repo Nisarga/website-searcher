@@ -1,20 +1,26 @@
 package main.java.mulithreadedexecutors;
 
-import java.util.LinkedList;
 import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedDeque;
 
-public class MyBlockingQueue<Type> {
-    private Queue<Type> queue = new LinkedList<>();
+/**
+ * A blocking queue implementation that waits for queue to become non-empty during a dequeue operation and waits for space
+ * to be available when adding tasks to the queue
+ *
+ * @param <Runnable>
+ */
+public class MyBlockingQueue<Runnable> {
+
+    private Queue<Runnable> queue = new ConcurrentLinkedDeque<>();
     private int EMPTY = 0;
-    private int MAX_TASK_IN_QUEUE = -1;
+    private int NUM_TASKS_IN_QUEUE = -1;
 
     public MyBlockingQueue(int size){
-        this.MAX_TASK_IN_QUEUE = size;
+        this.NUM_TASKS_IN_QUEUE = size;
     }
 
-    public synchronized void enqueue(Type task)
-            throws InterruptedException  {
-        while(this.queue.size() == this.MAX_TASK_IN_QUEUE) {
+    public synchronized void enqueue(Runnable task) throws InterruptedException  {
+        while(this.queue.size() == this.NUM_TASKS_IN_QUEUE) {
             wait();
         }
         if(this.queue.size() == EMPTY) {
@@ -23,12 +29,11 @@ public class MyBlockingQueue<Type> {
         this.queue.offer(task);
     }
 
-    public synchronized Type dequeue()
-            throws InterruptedException{
+    public synchronized Runnable dequeue() throws InterruptedException{
         while(this.queue.size() == EMPTY){
             wait();
         }
-        if(this.queue.size() == this.MAX_TASK_IN_QUEUE){
+        if(this.queue.size() == this.NUM_TASKS_IN_QUEUE){
             notifyAll();
         }
         return this.queue.poll();

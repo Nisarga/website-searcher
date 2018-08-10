@@ -1,23 +1,22 @@
 package main.java.utils;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * Simple utility class which goes through the URL list and creates a website object
- * Returns a list of website objects
- *
+ * Also initializes some resources
  */
-public class UrlExtractor {
+
+public class CreateUtilities {
+    private final static Logger LOGGER = Logger.getLogger(CreateUtilities.class.getName());
+
     public static List<WebsiteInformation> extractUrlFromFile(InputStream inputStream) throws IOException {
         List<WebsiteInformation> urlList = new ArrayList<>();
-        //InputStream inputStream1 = UrlExtractor.class.getResourceAsStream("urls.txt");
-        try (BufferedReader br
-                     = new BufferedReader(new InputStreamReader(inputStream))) {
+        //InputStream inputStream1 = CreateUtilities.class.getResourceAsStream("urls.txt");
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
             String line;
             boolean skipFirstLine = true;
             while ((line = br.readLine()) != null) {
@@ -38,5 +37,15 @@ public class UrlExtractor {
         }
         inputStream.close();
         return urlList;
+    }
+
+    public static void initializeResources(){
+        try{
+            FileWriter fileWriter = new FileWriter("myfile.txt", false);
+            fileWriter.close();
+        }
+        catch(IOException ex){
+            LOGGER.warning("Unable to create output file" + ex.toString());
+        }
     }
 }
