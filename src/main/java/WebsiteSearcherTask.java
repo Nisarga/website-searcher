@@ -2,6 +2,10 @@ package main.java;
 
 import main.java.mulithreadedexecutors.MyBlockingQueue;
 
+/**
+ * This class is responsible for dequeing the next available task from the Blocking queue
+ * The de-queued task then gets executed
+ */
 public class WebsiteSearcherTask implements Runnable {
     MyBlockingQueue<Runnable> queue;
 

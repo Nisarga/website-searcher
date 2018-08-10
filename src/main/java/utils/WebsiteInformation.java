@@ -1,5 +1,8 @@
 package main.java.utils;
 
+/**
+ * Website information class with simple setters and getters to retrieve information parsed from URLs
+ */
 public class WebsiteInformation {
     int rank;
     String url;

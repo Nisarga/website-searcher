@@ -33,36 +33,6 @@ public class WebsiteSearcherRunnable implements Runnable {
 
     public boolean parseUrlData() throws IOException {
         URL url = new URL(this.url);
-        /*HttpURLConnection con;
-
-        try {
-            HttpURLConnection.setFollowRedirects(false);
-            con = (HttpURLConnection) new URL(this.url).openConnection();
-            con.setRequestMethod("HEAD");
-
-            con.setConnectTimeout(1000); //set timeout to 5 seconds
-            con.setReadTimeout(5000);
-        } catch (java.net.SocketTimeoutException e) {
-            return false;
-        } catch (java.io.IOException e) {
-            return false;
-        }*/
-
-
-        /*if (con.getResponseCode() == HttpURLConnection.HTTP_OK) {
-            System.out.println("URL is " + this.url);
-            String inputLine;
-            while ((inputLine = new BufferedReader(new InputStreamReader(con.getInputStream(), StandardCharsets.UTF_8)).readLine()) != null) {
-                System.out.println("Reading line");
-                if (Arrays.asList(inputLine.split(" ")).contains(this.searchTerm)) {
-                    writeToFile(url);
-                    return true;
-                }
-            }
-        //}
-
-        return false;*/
-
 
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(url.openStream()));
@@ -70,6 +40,7 @@ public class WebsiteSearcherRunnable implements Runnable {
         String inputLine;
         while ((inputLine = in.readLine()) != null)
             if (inputLine!=null && Arrays.asList(inputLine.split(" ")).contains(this.searchTerm)) {
+                System.out.println("Writing to file when url is " + url);
                 writeToFile(url);
                 return true;
             }

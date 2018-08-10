@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * Main driver class for Website Searcher application
- * Given a list of URLs in resources/input/urls.txt find if a search term exists in the content of this URL
+ * Given a list of URLs in resources/urls.txt find if a search term exists in the content of this URL
  */
 public class Application {
     static String searchTerm = "is";
@@ -22,8 +22,6 @@ public class Application {
         InputStream inputStream =Application.class.getResourceAsStream("/urls.txt");
 
         List<WebsiteInformation> urlList = UrlExtractor.extractUrlFromFile(inputStream);
-        System.out.println("Size of list is " + urlList.size());
-
         MyThreadPoolImplementation threadPool = new MyThreadPoolImplementation(urlList.size(), MAX_NUM_THREADS);
 
 

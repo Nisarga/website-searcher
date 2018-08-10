@@ -4,6 +4,7 @@ import main.java.WebsiteSearcherTask;
 
 public class MyThreadPoolImplementation {
     MyBlockingQueue<Runnable> blockingQueue;
+
     public MyThreadPoolImplementation(int size, int maxThreads) throws InterruptedException{
         blockingQueue = new MyBlockingQueue<>(size);
         WebsiteSearcherTask task;
